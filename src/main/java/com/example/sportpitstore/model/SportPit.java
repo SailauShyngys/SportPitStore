@@ -7,9 +7,11 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.ZonedDateTime;
+import java.util.List;
+import java.util.Set;
 
 
-@Entity(name = "sportPit")
+@Entity(name = "sportPits")
 @Getter
 @Setter
 public class SportPit {
@@ -18,11 +20,14 @@ public class SportPit {
     private Long id;
     private String name;
     private String manufacture;
-    private double price;
+    private Integer price;
+    private String characterization;
     private Integer quantity;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+    @ManyToMany
+    private List<Order> sportPitOrders;
     @CreationTimestamp
     private ZonedDateTime createdDate;
     @UpdateTimestamp

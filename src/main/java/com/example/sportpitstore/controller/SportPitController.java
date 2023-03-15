@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class SportPitController {
@@ -17,11 +20,23 @@ public class SportPitController {
         return sportPitService.getById(id);
     }
 
-    @PostMapping("/api/sportPits")
-    public ResponseEntity<?> createSportPit(@RequestBody SportPitCreateDto createDto) {
-        String name = sportPitService
-                .createSportPit(createDto).getName();
+    @GetMapping("/api/sportPit/{id}")
+    public List<SportPit> getByIdSportPit(@PathVariable List<Long> id) throws Exception {
+        return sportPitService.getByIdSportPit(id);
+    }
 
-        return ResponseEntity.ok().body("SportPit saved - " + name);
+    @PostMapping("/api/sportPits")
+    public SportPit createSportPit(@RequestBody SportPitCreateDto createDto)throws Exception  {
+        return sportPitService.createSportPit(createDto);
+    }
+
+    @DeleteMapping("/api/sportPit/{id}")
+    public void deleteSportPit(@PathVariable Long id) throws Exception{
+        sportPitService.deleteSportPit(id);
+    }
+
+    @PutMapping("/api/sportPit/{id}")
+    public SportPit updateSportPit(@PathVariable Long id, @RequestBody SportPitCreateDto createDto) throws Exception{
+        return sportPitService.updateSportPit(id, createDto);
     }
 }

@@ -7,7 +7,8 @@ import lombok.Setter;
 public class SportPitCreateDto {
     private String name;
     private String manufacture;
-    private double price;
-    private Long categoryId;
+    private Integer price;
     private Integer quantity;
+    private Long categoryId;
+    private String characterization;
 }
