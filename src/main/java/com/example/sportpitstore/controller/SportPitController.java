@@ -30,13 +30,14 @@ public class SportPitController {
         return sportPitService.createSportPit(createDto);
     }
 
+    @PutMapping("/api/sportPit/{id}")
+    public SportPit updateSportPit(@PathVariable Long id, @RequestBody SportPitCreateDto createDto) throws Exception{
+        return sportPitService.updateSportPit(id, createDto);
+    }
+
     @DeleteMapping("/api/sportPit/{id}")
     public void deleteSportPit(@PathVariable Long id) throws Exception{
         sportPitService.deleteSportPit(id);
     }
 
-    @PutMapping("/api/sportPit/{id}")
-    public SportPit updateSportPit(@PathVariable Long id, @RequestBody SportPitCreateDto createDto) throws Exception{
-        return sportPitService.updateSportPit(id, createDto);
-    }
 }

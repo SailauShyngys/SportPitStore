@@ -29,11 +29,10 @@ public class SportPitServiceImpl implements SportPitService {
         SportPit sportPit = new SportPit();
         sportPit.setName(createDto.getName());
         sportPit.setManufacture(createDto.getManufacture());
-        sportPit.setQuantity(createDto.getQuantity());
-        sportPit.setCategory(categoryService.getById(createDto.getCategoryId()));
         sportPit.setPrice(createDto.getPrice());
         sportPit.setCharacterization(createDto.getCharacterization());
-
+        sportPit.setQuantity(createDto.getQuantity());
+        sportPit.setCategory(categoryService.getById(createDto.getCategoryId()));
         return sportPitRepository.save(sportPit);
     }
     @Override

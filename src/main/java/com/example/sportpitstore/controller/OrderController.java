@@ -13,12 +13,6 @@ import java.util.List;
 public class OrderController {
     private final OrderService orderService;
     public final OrderRepository orderRepository;
-
-    @PostMapping("/api/order")
-    public Order createOrder(@RequestBody OrderCreateDto createDto)throws Exception {
-        return orderService.createOrder(createDto.getSportPitsId());
-    }
-
     @GetMapping("/api/orders/{id}")
     public Order getById(@PathVariable Long id) throws Exception {
         return orderService.getById(id);
@@ -26,6 +20,10 @@ public class OrderController {
     @GetMapping("/api/order")
     public List<Order> getByAll() throws Exception{
         return orderService.getByAll();
+    }
+    @PostMapping("/api/order")
+    public Order createOrder(@RequestBody OrderCreateDto createDto)throws Exception {
+        return orderService.createOrder(createDto.getSportPitsId());
     }
 
     @DeleteMapping("/api/order/{id}")

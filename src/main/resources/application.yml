@@ -15,8 +15,8 @@ spring:
     generate-ddl: true
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
-#  security:
+      ddl-auto: update
+#  none
 #    user:
 #      name: volume
 #      password: volume
