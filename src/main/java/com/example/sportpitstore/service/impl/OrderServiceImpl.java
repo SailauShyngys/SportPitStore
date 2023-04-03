@@ -7,12 +7,13 @@ import com.example.sportpitstore.service.OrderService;
 import com.example.sportpitstore.service.SportPitService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public  class OrderServiceImpl implements OrderService {
+public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final SportPitService sportPitService;
 
@@ -21,13 +22,14 @@ public  class OrderServiceImpl implements OrderService {
     public Order getById(Long id) throws Exception {
         return orderRepository.findById(id).orElseThrow();
     }
+
     @Override
     public List<Order> getByAll() throws Exception {
         return orderRepository.findAll().stream().toList();
     }
 
     @Override
-    public  Order createOrder(List<Long> ids) throws Exception {
+    public Order createOrder(List<Long> ids) throws Exception {
         Order order = new Order();
         List<SportPit> sportPits = new ArrayList<>();
 
@@ -42,6 +44,7 @@ public  class OrderServiceImpl implements OrderService {
 
         return orderRepository.save(order);
     }
+
     private int orderSum(List<SportPit> sportPits) {
         int sum = 0;
 
@@ -51,8 +54,9 @@ public  class OrderServiceImpl implements OrderService {
 
         return sum;
     }
+
     @Override
-    public void deleteOrder(Long id){
+    public void deleteOrder(Long id) {
         orderRepository.deleteById(id);
     }
 }
